@@ -1,0 +1,55 @@
+version: "3"
+  
+networks:
+  localnet_gan:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.15.0.0/25
+
+volumes:
+  inputs:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: "$PWD/inputs_tests"
+  outputs:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: "$PWD/results"
+  pc:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: "$PWD/.Pycharm.dev"
+  code:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: "$PWD/GFPGAN/"
+
+services:
+  python_gan:
+    build: GFPGAN
+    networks: 
+      - localnet_gan
+    volumes:
+      - inputs:/GFPGAN/inputs_tests
+      - outputs:/GFPGAN/results
+  pycharm:
+    build: PyCharm
+    user: developer
+    networks: 
+      - localnet_gan
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - code:/GFPGAN/
+      - pc:/root
+      
+    environment:
+      DISPLAY: $DISPLAY
