@@ -5,7 +5,7 @@ This github allow you to run GFPGAN really easily, just by running following ste
 
 This docker also provides an IDE which automatically starts to allow you to edit code regarding GFPGAN (to edit upscaling for example).
 
-The IDE is **PyCharm 2019 community eddition**, and has access to the python environment of the python container for dev.
+The IDE is **PyCharm 2021 community eddition**, and has access to the python environment of the python container for dev.
 
 The dockerization connect these two containers by a dedicated local network, for now it does not bring functionnalities but could be if we used any kind of servers.
 
@@ -14,6 +14,7 @@ You firstly need to check that **docker-compose** is installed and with a recent
 
 - Clone this repo
 - Put the image(s) that you want to restore in the folder inputs_tests folder
+- Move inside cloned folder
 - Run commande : docker-compose up --build
 
 You can use them separately (just build both together and run as separate containers, or both at same time. The best advantages to run both at same time is that you can edit with PyCharm and directly restart GFPGAN docker service to see results of new version. (with new terminal window using docker restarts on project_python_gan container)
