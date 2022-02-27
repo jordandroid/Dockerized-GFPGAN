@@ -25,6 +25,9 @@ GFPGAN application automatically start with docker-compose up, you can also laun
 
 It can takes some times but your images should be restored in restore folder and the dev tool (PyCharm) should be launched.
 
+## Issues
+Your user must be added in docker group, I met some issues when running it using sudo user
+
 ## License and Acknowledgement
 
 GFPGAN dockerized is released under Apache License Version 2.0.
